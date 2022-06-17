@@ -7,8 +7,9 @@
 
 use std::env;
 
-pub mod commands;
+mod commands;
 mod help;
+mod new;
 use crate::help::help;
 fn get_args() -> Vec<String> {
     return env::args().collect();
