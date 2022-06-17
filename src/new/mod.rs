@@ -1,8 +1,16 @@
 use std::fs::File;
 use std::io::{stdin, Write};
 
+// get_file_extension will return the file extension used for checklists
+pub fn get_file_extension() -> String {
+    return ".chklst".to_string();
+}
+
 fn ask_name() -> String {
-    println!("Enter the name for the checklist (will have .txt appended): ");
+    println!(
+        "Enter the name for the checklist (will have {} appended): ",
+        get_file_extension()
+    );
     let mut input = String::new();
 
     stdin().read_line(&mut input).expect("Invalid input");
@@ -16,7 +24,7 @@ fn get_file_name(args: Vec<String>) -> String {
     } else {
         file_name = ask_name();
     }
-    return String::from(file_name + ".txt");
+    return String::from(file_name + &get_file_extension());
 }
 
 fn init_file(file_name: String) -> std::fs::File {
