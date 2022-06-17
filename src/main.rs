@@ -11,6 +11,7 @@ mod commands;
 mod help;
 mod new;
 use crate::help::help;
+use crate::new::new;
 fn get_args() -> Vec<String> {
     return env::args().collect();
 }
@@ -26,6 +27,10 @@ fn handle_args(args: Vec<String>) -> bool {
             help();
             return true;
         }
+        "new" => {
+            new(args);
+            return true;
+        }
         &_ => {
             println!("Invalid argument passed.");
             return false;
@@ -38,6 +43,7 @@ fn main() {
     handle_args(args);
 }
 
+#[cfg(test)]
 mod tests {
     use super::*;
 
